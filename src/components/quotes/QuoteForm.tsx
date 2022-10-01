@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import { LegacyRef } from 'react';
 import { useRouter } from 'next/router';
 import { FormEvent, useState } from 'react';
 import { trpc } from '../../utils/trpc';
@@ -14,8 +14,8 @@ const QuoteForm = () => {
   const [showAuthorWarning, setShowAuthorWarning] = useState<boolean>(false);
   const [showTextWarning, setShowTextWarning] = useState<boolean>(false);
 
-  const parent1 = useAutoAnimate({}) as RefObject<HTMLDivElement>;
-  const parent2 = useAutoAnimate({}) as RefObject<HTMLDivElement>;
+  const parent1 = useAutoAnimate({}) as LegacyRef<HTMLDivElement>;
+  const parent2 = useAutoAnimate({}) as LegacyRef<HTMLDivElement>;
 
   const setNofitication = useSetAtom(notificationAtom);
 

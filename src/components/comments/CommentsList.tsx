@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import { LegacyRef } from 'react';
 import CommentItem from './CommentItem';
 import { Comment } from '@prisma/client';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
@@ -8,7 +8,7 @@ type CommentsListProps = {
 };
 
 const CommentsList = ({ comments }: CommentsListProps) => {
-  const parent = useAutoAnimate({}) as RefObject<HTMLUListElement>;
+  const parent = useAutoAnimate({}) as LegacyRef<HTMLUListElement>;
 
   return (
     <ul
