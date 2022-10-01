@@ -14,8 +14,8 @@ const QuoteForm = () => {
   const [showAuthorWarning, setShowAuthorWarning] = useState<boolean>(false);
   const [showTextWarning, setShowTextWarning] = useState<boolean>(false);
 
-  const parent1 = useAutoAnimate({}) as LegacyRef<HTMLDivElement>;
-  const parent2 = useAutoAnimate({}) as LegacyRef<HTMLDivElement>;
+  const parent1 = useAutoAnimate({}) as unknown as LegacyRef<HTMLDivElement>;
+  const parent2 = useAutoAnimate({}) as unknown as LegacyRef<HTMLDivElement>;
 
   const setNofitication = useSetAtom(notificationAtom);
 

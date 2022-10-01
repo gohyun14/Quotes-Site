@@ -21,7 +21,7 @@ const sortQuotes = (quotes: Quote[], newest: boolean) => {
 const QuoteList = ({ quotes }: QuoteListProps) => {
   const router = useRouter();
 
-  const parent = useAutoAnimate({}) as LegacyRef<HTMLUListElement>;
+  const parent = useAutoAnimate({}) as unknown as LegacyRef<HTMLUListElement>;
 
   const isSortingNewest = router.query.sort === 'oldest';
 

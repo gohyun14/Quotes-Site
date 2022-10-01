@@ -8,7 +8,7 @@ type CommentsListProps = {
 };
 
 const CommentsList = ({ comments }: CommentsListProps) => {
-  const parent = useAutoAnimate({}) as LegacyRef<HTMLUListElement>;
+  const parent = useAutoAnimate({}) as unknown as LegacyRef<HTMLUListElement>;
 
   return (
     <ul
