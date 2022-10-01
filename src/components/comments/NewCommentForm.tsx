@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, LegacyRef } from 'react';
 import { Dialog } from '@headlessui/react';
 import { FormEvent } from 'react';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
@@ -11,7 +11,7 @@ const NewCommentForm = ({ onSubmit }: NewCommentFormProps) => {
   const [value, setValue] = useState<string>('');
   const [showWarning, setShowWarning] = useState(false);
 
-  const parent = useAutoAnimate({});
+  const parent = useAutoAnimate({}) as unknown as LegacyRef<HTMLFormElement>;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
