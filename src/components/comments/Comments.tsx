@@ -29,7 +29,7 @@ const Comments = ({ comments }: CommentsProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const router = useRouter();
-  const quoteId = router.query.quoteId;
+  const quoteId = router.query.quoteId as string;
 
   const handleSubmit = (text: string) => {
     setIsModalOpen(false);

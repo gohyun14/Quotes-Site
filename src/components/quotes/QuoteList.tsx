@@ -1,3 +1,4 @@
+import { RefObject } from 'react';
 import { Quote } from '@prisma/client';
 import { useRouter } from 'next/router';
 import QuoteItem from '../quotes/QuoteItem';
@@ -20,7 +21,7 @@ const sortQuotes = (quotes: Quote[], newest: boolean) => {
 const QuoteList = ({ quotes }: QuoteListProps) => {
   const router = useRouter();
 
-  const parent = useAutoAnimate({});
+  const parent = useAutoAnimate({}) as RefObject<HTMLUListElement>;
 
   const isSortingNewest = router.query.sort === 'oldest';
 

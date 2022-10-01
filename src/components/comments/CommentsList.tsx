@@ -1,3 +1,4 @@
+import { RefObject } from 'react';
 import CommentItem from './CommentItem';
 import { Comment } from '@prisma/client';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
@@ -7,7 +8,7 @@ type CommentsListProps = {
 };
 
 const CommentsList = ({ comments }: CommentsListProps) => {
-  const parent = useAutoAnimate({});
+  const parent = useAutoAnimate({}) as RefObject<HTMLUListElement>;
 
   return (
     <ul

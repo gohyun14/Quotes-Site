@@ -7,7 +7,7 @@ import LoadingSpinner from '../../components/UI/LoadingSpinner';
 
 const QuoteDetailPage: NextPage = () => {
   const router = useRouter();
-  const quoteId = router.query.quoteId;
+  const quoteId = router.query.quoteId as string;
 
   const quote = trpc.useQuery(['quotes.getById', { id: quoteId }]);
   const comments = trpc.useQuery([
@@ -21,7 +21,7 @@ const QuoteDetailPage: NextPage = () => {
 
   return (
     <>
-      <HighlightedQuote quote={quote.data} />
+      {quote.data && <HighlightedQuote quote={quote.data} />}
       <Comments comments={comments.data} />
     </>
   );
