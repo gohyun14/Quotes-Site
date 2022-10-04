@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { trpc } from '../../utils/trpc';
 import HighlightedQuote from '../../components/quotes/HighlightedQuote';
 import Comments from '../../components/comments/Comments';
@@ -21,6 +22,11 @@ const QuoteDetailPage: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Quote</title>
+        <meta name="description" content="Fullscreen Quote" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       {quote.data && <HighlightedQuote quote={quote.data} />}
       <Comments comments={comments.data} />
     </>

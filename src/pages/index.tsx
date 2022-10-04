@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import type { NextPage } from 'next';
 import { trpc } from '../utils/trpc';
 
@@ -27,7 +28,14 @@ const AllQuotesPage: NextPage = () => {
   }
 
   return loadedQuotes.data?.length > 0 ? (
-    <QuoteList quotes={loadedQuotes.data} />
+    <>
+      <Head>
+        <title>All Quotes</title>
+        <meta name="description" content="All Quotes" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <QuoteList quotes={loadedQuotes.data} />
+    </>
   ) : (
     <NoQuotesFound />
   );
