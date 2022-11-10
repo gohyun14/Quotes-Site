@@ -8,7 +8,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <MainNavigation />
-      <main className="my-12 mx-auto w-11/12 max-w-2xl">{children}</main>
+      <main className="mx-auto max-w-7xl sm:px-6 lg:px-8">{children}</main>
     </>
   );
 };

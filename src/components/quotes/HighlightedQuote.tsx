@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Quote } from '@prisma/client';
 import { trpc } from '../../utils/trpc';
 import { useSetAtom } from 'jotai';
-import { notificationAtom } from '../../state/atoms/notificationAtom';
+import { notificationsAtom } from '../../state/atoms/notificationAtom';
 import Modal from '../UI/Modal';
 import DeleteQuoteAlert from './DeleteQuoteAlert';
 
@@ -16,16 +16,19 @@ const HighlightedQuote = ({ quote }: HighlightedQuoteProps) => {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const setNofitication = useSetAtom(notificationAtom);
+  const setNofitications = useSetAtom(notificationsAtom);
 
   const utils = trpc.useContext();
   const deleteQuote = trpc.useMutation(['quotes.deleteById'], {
     onSuccess() {
       utils.invalidateQueries(['quotes.getAll']);
-      setNofitication({
-        title: 'Quote deleted!',
-        message: 'You have successfully deleted a quote.',
-      });
+      setNofitications((notifications) => [
+        ...notifications,
+        {
+          title: 'Quote deleted!',
+          message: 'You have successfully deleted a quote.',
+        },
+      ]);
     },
   });
   const deleteComments = trpc.useMutation(['comments.deleteAllByQuoteId'], {

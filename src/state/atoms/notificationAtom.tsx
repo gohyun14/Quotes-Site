@@ -5,4 +5,4 @@ export type NotificationAtomType = {
   message: string;
 };
 
-export const notificationAtom = atom<NotificationAtomType | null>(null);
+export const notificationsAtom = atom<NotificationAtomType[]>([]);

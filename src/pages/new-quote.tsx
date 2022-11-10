@@ -10,7 +10,7 @@ const NewQuotePage: NextPage = () => {
         <meta name="description" content="Add a new quote" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <QuoteForm />;
+      <QuoteForm />
     </>
   );
 };

@@ -10,7 +10,6 @@ import '../styles/globals.css';
 import Layout from '../components/layout/Layout';
 import { Provider } from 'jotai';
 import NotificationParent from '../components/UI/NotificationParent';
-import Notification from '../components/UI/Notification';
 
 const MyApp: AppType = ({
   Component,
@@ -22,9 +21,7 @@ const MyApp: AppType = ({
         <Layout>
           <Component {...pageProps} />
         </Layout>
-        <NotificationParent>
-          <Notification />
-        </NotificationParent>
+        <NotificationParent />
       </Provider>
     </SessionProvider>
   );

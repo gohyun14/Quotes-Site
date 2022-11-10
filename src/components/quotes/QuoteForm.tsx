@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { FormEvent, useState } from 'react';
 import { trpc } from '../../utils/trpc';
 import { useSetAtom } from 'jotai';
-import { notificationAtom } from '../../state/atoms/notificationAtom';
+import { notificationsAtom } from '../../state/atoms/notificationAtom';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const QuoteForm = () => {
@@ -17,16 +17,28 @@ const QuoteForm = () => {
   const parent1 = useAutoAnimate({}) as unknown as LegacyRef<HTMLDivElement>;
   const parent2 = useAutoAnimate({}) as unknown as LegacyRef<HTMLDivElement>;
 
-  const setNofitication = useSetAtom(notificationAtom);
+  const setNofitications = useSetAtom(notificationsAtom);
 
   const utils = trpc.useContext();
   const addQuote = trpc.useMutation(['quotes.create'], {
     onSuccess() {
       utils.invalidateQueries(['quotes.getAll']);
-      setNofitication({
-        title: 'Quote added!',
-        message: 'You have successfully added a quote.',
-      });
+      setNofitications((notifications) => [
+        ...notifications,
+        {
+          title: 'Quote added!',
+          message: 'You have successfully added a quote.',
+        },
+      ]);
+      setTimeout(() => {
+        setNofitications((notifications) => [
+          ...notifications,
+          {
+            title: 'Second notification!',
+            message: 'This is a second notification.',
+          },
+        ]);
+      }, 1000);
     },
   });
 
