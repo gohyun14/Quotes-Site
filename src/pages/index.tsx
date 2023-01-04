@@ -8,6 +8,8 @@ import QuoteList from '../components/quotes/QuoteList';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import NoQuotesFound from '../components/quotes/NoQuotesFound';
 
+console.log(process.env.DATABASE_URL);
+
 const AllQuotesPage: NextPage = () => {
   const loadedQuotes = trpc.useQuery(['quotes.getAll']);
 
