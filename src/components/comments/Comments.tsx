@@ -6,23 +6,26 @@ import Modal from '../UI/Modal';
 import NewCommentForm from '../comments/NewCommentForm';
 import { trpc } from '../../utils/trpc';
 import { useSetAtom } from 'jotai';
-import { notificationAtom } from '../../state/atoms/notificationAtom';
+import { notificationsAtom } from '../../state/atoms/notificationAtom';
 
 type CommentsProps = {
   comments: Comment[];
 };
 
 const Comments = ({ comments }: CommentsProps) => {
-  const setNofitication = useSetAtom(notificationAtom);
+  const setNofitications = useSetAtom(notificationsAtom);
 
   const utils = trpc.useContext();
   const commentMutation = trpc.useMutation(['comments.create'], {
     onSuccess() {
       utils.invalidateQueries(['comments.getAllByQuoteId']);
-      setNofitication({
-        title: 'Comment added!',
-        message: 'You have successfully added a comment.',
-      });
+      setNofitications((notifications) => [
+        ...notifications,
+        {
+          title: 'Comment added!',
+          message: 'You have successfully added a comment.',
+        },
+      ]);
     },
   });
 
