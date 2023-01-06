@@ -30,15 +30,15 @@ const QuoteForm = () => {
           message: 'You have successfully added a quote.',
         },
       ]);
-      setTimeout(() => {
-        setNofitications((notifications) => [
-          ...notifications,
-          {
-            title: 'Second notification!',
-            message: 'This is a second notification.',
-          },
-        ]);
-      }, 1000);
+      // setTimeout(() => {
+      //   setNofitications((notifications) => [
+      //     ...notifications,
+      //     {
+      //       title: 'Second notification!',
+      //       message: 'This is a second notification.',
+      //     },
+      //   ]);
+      // }, 1000);
     },
   });
 

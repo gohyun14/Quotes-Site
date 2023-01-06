@@ -19,14 +19,14 @@ const Notification = ({ notification }: NotificationProps) => {
 
   useEffect(() => {
     setShow(true);
-    // const timerId = setTimeout(() => {
-    //   setShow(false);
-    //   setTimeout(() => {
-    //     setNotifications((notifications) => notifications.slice(1));
-    //   }, 1000);
-    // }, 3500);
+    const timerId = setTimeout(() => {
+      setShow(false);
+      setTimeout(() => {
+        setNotifications((notifications) => notifications.slice(1));
+      }, 1000);
+    }, 3500);
 
-    // return () => clearTimeout(timerId);
+    return () => clearTimeout(timerId);
   }, [setNotifications]);
 
   return (
